@@ -1,0 +1,24 @@
+{% extends 'dependencies/header_login.html' %} {% block content %}
+
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent pb-5">
+          <div class="text-muted text-center mt-2 mb-3">LOGIN</div>
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+          {% include "login/login_form.html" %}
+        </div>
+      </div>
+      <div class="row mt-3 text-center">
+        <div class="col-12">
+          <a href="{{url_for('register')}}" class="text-light"
+            ><small>Create new account</small></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

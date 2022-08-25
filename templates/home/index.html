@@ -1,0 +1,233 @@
+{% extends 'dependencies/header.html' %} {% block content %}
+<div class="main-content" id="panel">
+  <!-- Header -->
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Status</h6>
+            <nav
+              aria-label="breadcrumb"
+              class="d-none d-md-inline-block ml-md-4"
+            ></nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <a href="#" class="btn btn-sm btn-neutral">New</a>
+          </div>
+        </div>
+        <!-- Card stats -->
+        <div class="row">
+          <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      My <br />Words
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0"
+                      >{{num_user_words}}</span
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"
+                    >
+                      <i class="ni ni-active-40"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">
+                      Total <br />
+                      Words
+                    </h5>
+                    <span class="h2 font-weight-bold mb-0">{{num_words}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div
+                      class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"
+                    >
+                      <i class="ni ni-chart-bar-32"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="card bg-default">
+          <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="text-light text-uppercase ls-1 mb-1">Card</h6>
+                <h5 class="h3 text-white mb-0">Daily Word</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Chart -->
+            <div class="chart">
+              <!-- Chart wrapper -->
+              <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="text-uppercase text-muted ls-1 mb-1">List</h6>
+                <h5 class="h3 mb-0">Total Words</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Chart -->
+            <div class="chart">
+              <div class="table-responsive">
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Word Name</th>
+                      <th scope="col">Definition</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for word in all_words %}
+                    <tr>
+                      <th scope="row">{{word.title}}</th>
+                      <td>{{word.definition}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">Words List</h3>
+              </div>
+              <div class="col text-right">
+                <a
+                  href="{{url_for('add_new_word')}}"
+                  class="btn btn-sm btn-primary"
+                  >Add New</a
+                >
+              </div>
+              <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Word Name</th>
+                  <th scope="col">Part Speech</th>
+                  <th scope="col">Definition</th>
+                  <th scope="col">Example Sentence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for word in user_words %}
+                <tr>
+                  <th scope="row">{{word.title}}</th>
+                  <td>{{word.part_speech}}</td>
+                  <td>{{word.definition}}</td>
+                  <td>{{word.example_sentence}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">NONE</h3>
+              </div>
+              <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">none</th>
+                  <th scope="col">none</th>
+                  <th scope="col">none</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">none</th>
+                  <td>none</td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <th scope="row">none</th>
+                  <td>none</td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <th scope="row">none</th>
+                  <td>none</td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <th scope="row">none</th>
+                  <td>none</td>
+                  <td>none</td>
+                </tr>
+                <tr>
+                  <th scope="row">none</th>
+                  <td>none</td>
+                  <td>none</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

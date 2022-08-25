@@ -1,0 +1,61 @@
+{% extends 'dependencies/header.html' %} {% block content %}
+<script>
+  function set_audio() {
+    let text = document.getElementById("audio_text").value;
+    parent = document.getElementById("audio");
+    markup = `
+      <source src="${text}"/>
+      <source src="${text}"/>
+      `;
+
+    parent.insertAdjacentHTML("afterbegin", markup);
+  }
+</script>
+<div class="main-content pt-md-4" id="panel">
+  <!-- Page content col-xl-8 order-xl-1-->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-8">
+        <div class="card card-profile">
+          <div class="row justify-content-center">
+            <div class="col-lg-7">
+              <h1 class="pt-md-4" >{{word.title}}</h1>
+              <h2 class="subheading">{{word.part_speech}}</h2>
+              <span class="meta">
+                {{word.definition}}
+                <hr />
+                {{word.example_sentence}}
+                
+
+               
+              <input
+                id="audio_text"
+                hidden="hidden"
+                name="audio_file"
+                value="{{word.audio_file}}"
+              />
+              <hr />
+              <audio id="audio" controls onloadstart="set_audio()">
+                <source />
+                <source />
+                Your browser does not support the audio element.
+              </audio>
+              <hr />
+            </div>
+          </div>
+          <div class="card-header text-center pt-10 pb-md-10">
+            <div class="d-flex justify-content-between">
+              <a href="#" class="btn btn-sm btn-info mr-4">Prev Word</a>
+              <a
+                href="{{url_for('show_card',word_id=next_word)}}"
+                class="btn btn-sm btn-default float-right"
+                >next Word</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

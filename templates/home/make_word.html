@@ -1,0 +1,15 @@
+{% extends 'dependencies/header.html' %} {% block content %}
+
+<div class="main-content pt-md-4" id="panel">
+  <!-- Page content col-xl-8 order-xl-1-->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-8">
+        <div class="card card-profile">
+          {% include "login/login_form.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

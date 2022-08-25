@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>English Smart Cards</title>
+
+    <!-- Favicon - loaded as static -->
+    <link
+      rel="icon"
+      href="/static/assets/img/brand/favicon.png"
+      type="image/png"
+    />
+    <!-- Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+    />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="/static/assets/vendor/nucleo/css/nucleo.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+      type="text/css"
+    />
+    <!-- Page plugins -->
+    <!-- Argon CSS -->
+    <link
+      rel="stylesheet"
+      href="/static/assets/css/englishCards.css"
+      type="text/css"
+    />
+  </head>
+
+  <body class="">
+    <!-- Side-Nav-Bar -->
+
+    <nav
+      class="navbar navbar-top navbar-expand navbar-dark bg-dark border-bottom"
+    >
+      <!-- Brand -->
+      <div class="">
+        <a class="" href="{{url_for('home')}}">
+          <a class="navbar-brand" href="/"
+            ><img
+              src="/static/assets/img/velikiLogo.png"
+              alt="Veliki's Design - Template Starter Logo."
+          /></a>
+        </a>
+      </div>
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Navbar links -->
+          <ul class="navbar-nav align-items-center ml-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link {% if 'index' in segment %} active {% endif %}"
+                href="{{ url_for('show_card',word_id=min_index)}}"
+              >
+                <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">Card View</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link pr-0"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="" src="" />
+                  </span>
+                  <div class="media-body ml-2 d-none d-lg-block">
+                    <span class="mb-0 text-sm font-weight-bold">
+                      {{current_user.name}}
+                    </span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                </div>
+                <a href="" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ url_for('logout')}}" class="dropdown-item">
+                  <i class="ni ni-user-run text-red"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page content -->
+    {% block content %}{% endblock content %} {% include
+    "dependencies/scripts.html" %}
+    <script src="/static/assets/js/argon.js?v=1.2.0"></script>
+  </body>
+</html>
