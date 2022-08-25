@@ -86,8 +86,19 @@
           <div class="card-body">
             <!-- Chart -->
             <div class="chart">
-              <!-- Chart wrapper -->
-              <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+              <div class="card-profile">
+                <div class="row justify-content-center">
+                  <div class="col-lg-7 text-light">
+                    <h1 class="pt-md-4 text-light" >{{all_words[0].title}}</h1>
+                    <h2 class="subheading text-light">{{all_words[0].part_speech}}</h2>
+                    <span class="meta">
+                      {{all_words[0].definition}}
+                      <hr />
+                      {{all_words[0].example_sentence}}
+                    <hr />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -28,8 +28,8 @@ login_manager.init_app(app)
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 
-#ENV = 'prod'
-ENV = 'dev'
+ENV = 'prod'
+#ENV = 'dev'
 
 if ENV =='dev':
   app.debug=True
@@ -57,9 +57,7 @@ class User(UserMixin,db.Model):
 
 class Word(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  ##
   author_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-  ##
   author = relationship("User", back_populates="words")
   title = db.Column(db.String(250), unique=True, nullable=False)
   part_speech= db.Column(db.String(250), nullable=True)
@@ -113,6 +111,7 @@ def request_new_word():
         date=date.today().strftime("%B %d, %Y"),
       )
       db.session.add(new_word)
+      current_user.words.append(new_word)
       db.session.commit()
     return redirect(url_for("home"))
   return render_template("home/make_word.html",min_index=0, form=form ,current_user=current_user)
