@@ -28,8 +28,8 @@ login_manager.init_app(app)
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 
-#ENV = 'prod'
-ENV = 'dev'
+ENV = 'prod'
+#ENV = 'dev'
 
 if ENV =='dev':
   app.debug=True
